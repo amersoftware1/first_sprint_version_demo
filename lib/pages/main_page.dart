@@ -29,6 +29,9 @@ class _MainPage extends State<MainPage> {
       print('NFC Error: $e');
     } finally {
       await FlutterNfcKit.finish();
+      setState(() {
+        isScanningActive = false;
+      });
       print("Scanning Stopped ");
     }
   }
@@ -53,6 +56,9 @@ class _MainPage extends State<MainPage> {
               onPressed: () {
                 scanNfc();
                 print("Started Scanning ");
+                setState(() {
+                  isScanningActive = true;
+                });
               },
               child: Text('Scan NFC Card'),
             ),
