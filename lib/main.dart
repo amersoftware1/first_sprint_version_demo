@@ -34,7 +34,7 @@ class _MyApp extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Scanner Demo')),
+      appBar: AppBar(title: Center(child: Text('Scanner Demo'))),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
