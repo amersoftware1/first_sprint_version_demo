@@ -1,7 +1,18 @@
 include: package:flutter_lints/flutter.yaml
 
 analyzer:
+  errors:
+    avoid_print: ignore
+    
   exclude:
     - build/**
     - android/**
     - ios/**
+    - web/**
+    - windows/**
+
+linter:
+  rules:
+    - discarded_futures
+    - unawaited_futures
+    
