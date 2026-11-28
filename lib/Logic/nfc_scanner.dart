@@ -1,15 +1,23 @@
-// import 'package:flutter_nfc_kit/flutter_nfc_kit.dart';
+import 'package:flutter_nfc_kit/flutter_nfc_kit.dart';
 
-// class NfcScanner {
-//   static String? _uid;
+class NfcScanner {
+  static List<String> scannedCards = [];
 
-//   static String getUid() async {
-//     try {
-//       NFCTag tag = await FlutterNfcKit.poll();
-//       _uid = tag.id;
-//     } catch (e) {
-//       print(e);
-//     }
-//     return _uid;
-//   }
-// }
+  static Future<String?> poll() async {
+    String uid;
+    try {
+      print("scanning started");
+      NFCTag nfcTag = await FlutterNfcKit.poll();
+      uid = nfcTag.id;
+      print(nfcTag.id);
+    } catch (e) {
+      return null;
+    } finally {
+      await FlutterNfcKit.finish();
+      print("scanning finished");
+    }
+
+    scannedCards.add(uid);
+    return uid;
+  }
+}
